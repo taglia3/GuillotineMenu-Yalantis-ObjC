@@ -46,14 +46,15 @@
 }
 
 
-@property(nonatomic, strong) UIButton *menuButton;
-
+@property (nonatomic, strong) UIButton  *menuButton;
+@property (nonatomic, strong) NSArray   *menuTitles;
+@property (nonatomic, strong) NSArray   *imagesTitles;
 @property (nonatomic, strong) UIColor   *menuColor;
 
 @property (nonatomic, weak) id<TGLGuillotineMenuDelegate> delegate;
 
 // -Init method
--(id)initWithFrame:(CGRect)frame MenuButton:(UIButton*)button;
+-(id)initWithFrame:(CGRect)frame MenuButton:(UIButton*)button MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;
 
 // -
 -(BOOL)isOpen;
@@ -71,5 +72,6 @@
 
 - (void)menuDidOpen;
 - (void)menuDidClose;
+- (void)selectedMenuItemAtIndex:(NSInteger)index;
 
 @end

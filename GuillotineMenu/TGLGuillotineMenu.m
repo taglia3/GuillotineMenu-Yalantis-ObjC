@@ -10,15 +10,19 @@
 
 @implementation TGLGuillotineMenu
 
-@synthesize menuButton, menuColor;
+@synthesize menuButton, menuColor, menuTitles, imagesTitles;
 
--(id)initWithFrame:(CGRect)frame MenuButton:(UIButton *)button{
+-(id)initWithFrame:(CGRect)frame MenuButton:(UIButton *)button MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles{
     
     self = [super initWithFrame:frame];
     
     if (self) {
         
         self.menuButton = button;
+        self.menuTitles = titles;
+        self.imagesTitles = imgTitles;
+        
+        
         self.backgroundColor = [UIColor clearColor];
         self.menuColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
         
@@ -60,9 +64,10 @@
     
     // - Menu Button
     
-    float tableViewMarginTop = 30.0;
+    float tableViewMarginTop = 50.0;
+    float tableViewW = 200.0;
     
-    menuTableView = [[UITableView alloc ]initWithFrame:CGRectMake(0.0, tableViewMarginTop + navBarH, screenW, screenH - 200.0 - tableViewMarginTop)];
+    menuTableView = [[UITableView alloc ]initWithFrame:CGRectMake((screenW - tableViewW)/2, tableViewMarginTop + navBarH, tableViewW, screenH - 200.0 - tableViewMarginTop)];
     menuTableView.center = menuView.center;
     menuTableView.backgroundColor = [UIColor clearColor];
     menuTableView.delegate = self;
@@ -136,7 +141,7 @@
             oldAngle = currentAngle;
         }else if(currentAngle != oldAngle){
             
-            NSLog(@"%f", degrees);
+         //   NSLog(@"%f", degrees);
             
             CABasicAnimation *rota = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
             rota.duration = 0.01;
@@ -178,7 +183,7 @@
 
 -(void)openMenu{
     
-    NSLog(@"Open menu");
+  //  NSLog(@"Open menu");
     
     
     // - Menu Table
@@ -204,7 +209,7 @@
 
 -(void)dismissMenu{
     
-    NSLog(@"Dismiss menu");
+  //  NSLog(@"Dismiss menu");
     
     
     [animator removeBehavior:pushOpen];
@@ -224,7 +229,7 @@
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
    withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
     
-    NSLog(@"Collisione - %@", identifier);
+   // NSLog(@"Collisione - %@", identifier);
     
     NSString *identifierString = [NSString stringWithFormat:@"%@", identifier];
     
@@ -248,7 +253,6 @@
         if(!isPresentedFirst){
             
             isPresentedFirst = YES;
-           // [self presentStartVC];
         }
         
         
@@ -287,18 +291,34 @@
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.text = @"MENU ITEM";
+    cell.textLabel.font = [UIFont systemFontOfSize:19.0];
+    cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
     
-    cell.imageView.image = [UIImage imageNamed:@"ic_settings"];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[self.imagesTitles objectAtIndex:indexPath.row]]];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50.0f;
+    return 55.0f;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(!isOpen)
+        return;
+    
+    [menuTableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+    
+    
+    if ([strongDelegate respondsToSelector:@selector(selectedMenuItemAtIndex:)]) {
+        [strongDelegate selectedMenuItemAtIndex:indexPath.row];
+    }
+    
+    [self dismissMenu];
+}
 
 @end

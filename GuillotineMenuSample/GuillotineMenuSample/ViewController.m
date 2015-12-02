@@ -53,7 +53,11 @@ static const CGFloat cellSpacing = 20;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     
-    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:self.view.frame MenuButton:menuButton];
+    
+    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"PROFILE", @"FEED", @"ACTIVITY", @"SETTINGS", nil];
+    NSArray *imagesArray   = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_feed", @"ic_activity", @"ic_settings", nil];
+    
+    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:self.view.frame MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
     self.menu.delegate = self;
     self.menu.alpha = 1.0;
     [self.view addSubview: self.menu];
@@ -110,5 +114,15 @@ static const CGFloat cellSpacing = 20;
 -(void)switchMenuState{
     [self.menu switchMenuState];
 }
+
+
+#pragma mark - Guillotine Menu Delegate
+
+-(void)selectedMenuItemAtIndex:(NSInteger)index{
+
+    NSLog(@"Selected menu item at index %ld", index);
+}
+
+
 
 @end
