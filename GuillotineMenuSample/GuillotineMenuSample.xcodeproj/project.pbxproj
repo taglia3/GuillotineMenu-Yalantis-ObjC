@@ -10,7 +10,6 @@
 		BA3FE3B41C0EE02B00C62C0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3B31C0EE02B00C62C0F /* main.m */; };
 		BA3FE3B71C0EE02B00C62C0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3B61C0EE02B00C62C0F /* AppDelegate.m */; };
 		BA3FE3BA1C0EE02B00C62C0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3B91C0EE02B00C62C0F /* ViewController.m */; };
-		BA3FE3BD1C0EE02B00C62C0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3BB1C0EE02B00C62C0F /* Main.storyboard */; };
 		BA3FE3BF1C0EE02B00C62C0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3BE1C0EE02B00C62C0F /* Assets.xcassets */; };
 		BA3FE3C21C0EE02B00C62C0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3C01C0EE02B00C62C0F /* LaunchScreen.storyboard */; };
 		BA3FE3CD1C0EE02B00C62C0F /* GuillotineMenuSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3CC1C0EE02B00C62C0F /* GuillotineMenuSampleTests.m */; };
@@ -41,7 +40,6 @@
 		BA3FE3B61C0EE02B00C62C0F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BA3FE3B81C0EE02B00C62C0F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BA3FE3B91C0EE02B00C62C0F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BA3FE3BC1C0EE02B00C62C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA3FE3BE1C0EE02B00C62C0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA3FE3C11C0EE02B00C62C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA3FE3C31C0EE02B00C62C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +79,7 @@
 		BA3FE3A61C0EE02B00C62C0F = {
 			isa = PBXGroup;
 			children = (
+				BA3FE3E51C0EE16C00C62C0F /* GuillotineMenu */,
 				BA3FE3B11C0EE02B00C62C0F /* GuillotineMenuSample */,
 				BA3FE3CB1C0EE02B00C62C0F /* GuillotineMenuSampleTests */,
 				BA3FE3D61C0EE02B00C62C0F /* GuillotineMenuSampleUITests */,
@@ -105,7 +104,6 @@
 				BA3FE3B61C0EE02B00C62C0F /* AppDelegate.m */,
 				BA3FE3B81C0EE02B00C62C0F /* ViewController.h */,
 				BA3FE3B91C0EE02B00C62C0F /* ViewController.m */,
-				BA3FE3BB1C0EE02B00C62C0F /* Main.storyboard */,
 				BA3FE3BE1C0EE02B00C62C0F /* Assets.xcassets */,
 				BA3FE3C01C0EE02B00C62C0F /* LaunchScreen.storyboard */,
 				BA3FE3C31C0EE02B00C62C0F /* Info.plist */,
@@ -138,6 +136,13 @@
 				BA3FE3D91C0EE02B00C62C0F /* Info.plist */,
 			);
 			path = GuillotineMenuSampleUITests;
+			sourceTree = "<group>";
+		};
+		BA3FE3E51C0EE16C00C62C0F /* GuillotineMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GuillotineMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +250,6 @@
 			files = (
 				BA3FE3C21C0EE02B00C62C0F /* LaunchScreen.storyboard in Resources */,
 				BA3FE3BF1C0EE02B00C62C0F /* Assets.xcassets in Resources */,
-				BA3FE3BD1C0EE02B00C62C0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +312,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BA3FE3BB1C0EE02B00C62C0F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA3FE3BC1C0EE02B00C62C0F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BA3FE3C01C0EE02B00C62C0F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
