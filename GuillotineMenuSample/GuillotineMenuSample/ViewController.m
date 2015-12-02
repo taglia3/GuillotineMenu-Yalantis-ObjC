@@ -36,6 +36,15 @@ static const CGFloat cellSpacing = 20;
     tableView.delegate     = self;
     [self.view addSubview:tableView];
     
+    
+    // - Menu Button
+    float buttonMenuW = 15.0;
+    float buttonMenuH = 10.0;
+    
+    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
+    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+    [menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
 }
 
 #pragma mark - Table view data source
@@ -86,5 +95,8 @@ static const CGFloat cellSpacing = 20;
     view.tintColor = [UIColor clearColor];
 }
 
+-(void)switchMenuState{
+    
+}
 
 @end
