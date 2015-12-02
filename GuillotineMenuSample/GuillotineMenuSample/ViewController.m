@@ -28,6 +28,7 @@ static const CGFloat cellSpacing = 20;
     [super viewDidLoad];
     
     UINavigationBar* navBar = self.navigationController.navigationBar;
+    [navBar setTranslucent:YES];
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
