@@ -18,13 +18,13 @@
     float navBarH;
     float statusBarH;
     
-    // - Menu Button Rotation
-    float oldAngle;
-    float currentAngle;
-    
     UIView      *menuView;
     UIButton    *menuButton;
     UITableView *menuTableView;
+    
+    // - Menu Button Rotation
+    float oldAngle;
+    float currentAngle;
     
     
     BOOL isOpen;
@@ -42,7 +42,6 @@
     CGPoint puntoAncoraggio;
     
     BOOL isPresentedFirst;
-    
 }
 
 
@@ -52,6 +51,7 @@
 @property (nonatomic, strong) UIColor   *menuColor;
 
 @property (nonatomic, weak) id<TGLGuillotineMenuDelegate> delegate;
+
 
 // -Init method
 -(id)initWithFrame:(CGRect)frame MenuButton:(UIButton*)button MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;

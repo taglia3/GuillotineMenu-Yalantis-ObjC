@@ -162,13 +162,6 @@
     return isOpen;
 }
 
--(void)showAncorPointDebug{
-    UIView *ancorPointView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 5, 5)];
-    ancorPointView.center = puntoAncoraggio;
-    ancorPointView.layer.cornerRadius = ancorPointView.frame.size.width/2;
-    ancorPointView.backgroundColor = [UIColor greenColor];
-    [menuView addSubview:ancorPointView];
-}
 
 -(void)switchMenuState{
     
@@ -183,7 +176,12 @@
 
 -(void)openMenu{
     
-  //  NSLog(@"Open menu");
+    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+    
+    
+    if ([strongDelegate respondsToSelector:@selector(menuDidOpen)]) {
+        [strongDelegate menuDidOpen];
+    }
     
     
     // - Menu Table
@@ -209,8 +207,12 @@
 
 -(void)dismissMenu{
     
-  //  NSLog(@"Dismiss menu");
+    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
     
+    
+    if ([strongDelegate respondsToSelector:@selector(menuDidClose)]) {
+        [strongDelegate menuDidClose];
+    }
     
     [animator removeBehavior:pushOpen];
     
@@ -229,7 +231,6 @@
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
    withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
     
-   // NSLog(@"Collisione - %@", identifier);
     
     NSString *identifierString = [NSString stringWithFormat:@"%@", identifier];
     

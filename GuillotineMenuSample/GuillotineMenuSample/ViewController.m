@@ -28,11 +28,10 @@ static const CGFloat cellSpacing = 20;
     [super viewDidLoad];
     
     UINavigationBar* navBar = self.navigationController.navigationBar;
-    [navBar setTranslucent: YES];
-    //navBar.barTintColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
+    
     self.navigationItem.title = @"ACTIVITY";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
@@ -62,6 +61,27 @@ static const CGFloat cellSpacing = 20;
     self.menu.alpha = 1.0;
     [self.view addSubview: self.menu];
 }
+
+-(void)switchMenuState{
+    [self.menu switchMenuState];
+}
+
+
+#pragma mark - Guillotine Menu Delegate
+
+-(void)selectedMenuItemAtIndex:(NSInteger)index{
+    
+    NSLog(@"Selected menu item at index %ld", index);
+}
+
+-(void)menuDidOpen{
+    NSLog(@"Menu did Open");
+}
+
+-(void)menuDidClose{
+    NSLog(@"Menu did Close");
+}
+
 
 #pragma mark - Table view data source
 
@@ -110,19 +130,6 @@ static const CGFloat cellSpacing = 20;
 {
     view.tintColor = [UIColor clearColor];
 }
-
--(void)switchMenuState{
-    [self.menu switchMenuState];
-}
-
-
-#pragma mark - Guillotine Menu Delegate
-
--(void)selectedMenuItemAtIndex:(NSInteger)index{
-
-    NSLog(@"Selected menu item at index %ld", index);
-}
-
 
 
 @end
