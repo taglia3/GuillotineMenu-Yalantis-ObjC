@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+
+#import "TGLTableViewController.h"
 #import "TGLSampleViewController.h"
 
 #import "TGLGuillotineMenu.h"
@@ -23,9 +24,10 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    TGLSampleViewController *vc01 = [[TGLSampleViewController alloc] init];
+    
+    TGLTableViewController *vc01 = [[TGLTableViewController alloc] init];
     TGLSampleViewController *vc02 = [[TGLSampleViewController alloc] init];
-    TGLSampleViewController *vc03 = [[TGLSampleViewController alloc] init];
+    TGLTableViewController *vc03 = [[TGLTableViewController alloc] init];
     TGLSampleViewController *vc04 = [[TGLSampleViewController alloc] init];
     
     NSArray *vcArray        = [[NSArray alloc] initWithObjects:vc01, vc02, vc03, vc04, nil];
@@ -35,9 +37,9 @@
     TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray];
     menuVC.delegate = self;
     
+    
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];

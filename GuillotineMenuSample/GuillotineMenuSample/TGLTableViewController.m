@@ -6,33 +6,24 @@
 //  Copyright © 2015 Matteo Tagliafico. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TGLTableViewController.h"
 #import "TableViewCell.h"
-
-#import "TGLGuillotineMenu.h"
 
 static NSString* reuseIdentifier = @"CellPH";
 static const CGFloat cellHeight = 210;
 static const CGFloat cellSpacing = 20;
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate, TGLGuillotineMenuDelegate>
-
-@property (nonatomic, strong) TGLGuillotineMenu *menu;
+@interface TGLTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation ViewController
+@implementation TGLTableViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UINavigationBar* navBar = self.navigationController.navigationBar;
-    [navBar setTranslucent:YES];
-    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
-    [navBar setShadowImage:[[UIImage alloc] init]];
-
+    self.parentViewController.navigationItem.title = @"TABLE";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     tableView.backgroundColor = [UIColor colorWithRed:44.0 / 255.0 green:42.f / 255.f blue:54.f / 255.f alpha:1];
@@ -40,43 +31,6 @@ static const CGFloat cellSpacing = 20;
     tableView.dataSource   = self;
     tableView.delegate     = self;
     [self.view addSubview:tableView];
-    
-    
-    // - Menu Button
-    float buttonMenuW = 15.0;
-    float buttonMenuH = 10.0;
-    
-    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
-    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
-    
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-//    
-//    
-//    
-//    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:[UIScreen mainScreen].bounds MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
-//    self.menu.delegate = self;
-//    [self.view addSubview: self.menu];
-}
-
--(void)switchMenuState{
-    [self.menu switchMenuState];
-}
-
-
-#pragma mark - Guillotine Menu Delegate
-
--(void)selectedMenuItemAtIndex:(NSInteger)index{
-    
-    NSLog(@"Selected menu item at index %ld", index);
-}
-
--(void)menuDidOpen{
-    NSLog(@"Menu did Open");
-}
-
--(void)menuDidClose{
-    NSLog(@"Menu did Close");
 }
 
 
