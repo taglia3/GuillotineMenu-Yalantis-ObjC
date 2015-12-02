@@ -14,6 +14,16 @@
 		BA3FE3C21C0EE02B00C62C0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3C01C0EE02B00C62C0F /* LaunchScreen.storyboard */; };
 		BA3FE3CD1C0EE02B00C62C0F /* GuillotineMenuSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3CC1C0EE02B00C62C0F /* GuillotineMenuSampleTests.m */; };
 		BA3FE3D81C0EE02B00C62C0F /* GuillotineMenuSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3D71C0EE02B00C62C0F /* GuillotineMenuSampleUITests.m */; };
+		BA3FE3EF1C0EE56B00C62C0F /* content_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3E71C0EE56B00C62C0F /* content_1@3x.png */; };
+		BA3FE3F01C0EE56B00C62C0F /* content_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3E81C0EE56B00C62C0F /* content_2@3x.png */; };
+		BA3FE3F11C0EE56B00C62C0F /* ic_activity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3E91C0EE56B00C62C0F /* ic_activity@3x.png */; };
+		BA3FE3F21C0EE56B00C62C0F /* ic_feed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3EA1C0EE56B00C62C0F /* ic_feed@3x.png */; };
+		BA3FE3F31C0EE56B00C62C0F /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3EB1C0EE56B00C62C0F /* ic_menu@3x.png */; };
+		BA3FE3F41C0EE56B00C62C0F /* ic_menuRotated@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3EC1C0EE56B00C62C0F /* ic_menuRotated@3x.png */; };
+		BA3FE3F51C0EE56B00C62C0F /* ic_profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3ED1C0EE56B00C62C0F /* ic_profile@3x.png */; };
+		BA3FE3F61C0EE56B00C62C0F /* ic_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3EE1C0EE56B00C62C0F /* ic_settings@3x.png */; };
+		BA3FE4001C0EEC1E00C62C0F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3FE1C0EEC1E00C62C0F /* TableViewCell.m */; };
+		BA3FE4011C0EEC1E00C62C0F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,17 @@
 		BA3FE3D31C0EE02B00C62C0F /* GuillotineMenuSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuillotineMenuSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3FE3D71C0EE02B00C62C0F /* GuillotineMenuSampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuillotineMenuSampleUITests.m; sourceTree = "<group>"; };
 		BA3FE3D91C0EE02B00C62C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA3FE3E71C0EE56B00C62C0F /* content_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "content_1@3x.png"; sourceTree = "<group>"; };
+		BA3FE3E81C0EE56B00C62C0F /* content_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "content_2@3x.png"; sourceTree = "<group>"; };
+		BA3FE3E91C0EE56B00C62C0F /* ic_activity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_activity@3x.png"; sourceTree = "<group>"; };
+		BA3FE3EA1C0EE56B00C62C0F /* ic_feed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_feed@3x.png"; sourceTree = "<group>"; };
+		BA3FE3EB1C0EE56B00C62C0F /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@3x.png"; sourceTree = "<group>"; };
+		BA3FE3EC1C0EE56B00C62C0F /* ic_menuRotated@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menuRotated@3x.png"; sourceTree = "<group>"; };
+		BA3FE3ED1C0EE56B00C62C0F /* ic_profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_profile@3x.png"; sourceTree = "<group>"; };
+		BA3FE3EE1C0EE56B00C62C0F /* ic_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_settings@3x.png"; sourceTree = "<group>"; };
+		BA3FE3FD1C0EEC1E00C62C0F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCell.h; path = Cell/TableViewCell.h; sourceTree = "<group>"; };
+		BA3FE3FE1C0EEC1E00C62C0F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = Cell/TableViewCell.m; sourceTree = "<group>"; };
+		BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = Cell/TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +121,8 @@
 		BA3FE3B11C0EE02B00C62C0F /* GuillotineMenuSample */ = {
 			isa = PBXGroup;
 			children = (
+				BA3FE3FC1C0EE6F700C62C0F /* Cell */,
+				BA3FE3E61C0EE54000C62C0F /* Assets */,
 				BA3FE3B51C0EE02B00C62C0F /* AppDelegate.h */,
 				BA3FE3B61C0EE02B00C62C0F /* AppDelegate.m */,
 				BA3FE3B81C0EE02B00C62C0F /* ViewController.h */,
@@ -143,6 +166,31 @@
 			children = (
 			);
 			name = GuillotineMenu;
+			sourceTree = "<group>";
+		};
+		BA3FE3E61C0EE54000C62C0F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BA3FE3E71C0EE56B00C62C0F /* content_1@3x.png */,
+				BA3FE3E81C0EE56B00C62C0F /* content_2@3x.png */,
+				BA3FE3E91C0EE56B00C62C0F /* ic_activity@3x.png */,
+				BA3FE3EA1C0EE56B00C62C0F /* ic_feed@3x.png */,
+				BA3FE3EB1C0EE56B00C62C0F /* ic_menu@3x.png */,
+				BA3FE3EC1C0EE56B00C62C0F /* ic_menuRotated@3x.png */,
+				BA3FE3ED1C0EE56B00C62C0F /* ic_profile@3x.png */,
+				BA3FE3EE1C0EE56B00C62C0F /* ic_settings@3x.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		BA3FE3FC1C0EE6F700C62C0F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BA3FE3FD1C0EEC1E00C62C0F /* TableViewCell.h */,
+				BA3FE3FE1C0EEC1E00C62C0F /* TableViewCell.m */,
+				BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +297,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3FE3C21C0EE02B00C62C0F /* LaunchScreen.storyboard in Resources */,
+				BA3FE4011C0EEC1E00C62C0F /* TableViewCell.xib in Resources */,
+				BA3FE3EF1C0EE56B00C62C0F /* content_1@3x.png in Resources */,
+				BA3FE3F61C0EE56B00C62C0F /* ic_settings@3x.png in Resources */,
+				BA3FE3F11C0EE56B00C62C0F /* ic_activity@3x.png in Resources */,
+				BA3FE3F21C0EE56B00C62C0F /* ic_feed@3x.png in Resources */,
+				BA3FE3F01C0EE56B00C62C0F /* content_2@3x.png in Resources */,
+				BA3FE3F51C0EE56B00C62C0F /* ic_profile@3x.png in Resources */,
 				BA3FE3BF1C0EE02B00C62C0F /* Assets.xcassets in Resources */,
+				BA3FE3F41C0EE56B00C62C0F /* ic_menuRotated@3x.png in Resources */,
+				BA3FE3F31C0EE56B00C62C0F /* ic_menu@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3FE3BA1C0EE02B00C62C0F /* ViewController.m in Sources */,
+				BA3FE4001C0EEC1E00C62C0F /* TableViewCell.m in Sources */,
 				BA3FE3B71C0EE02B00C62C0F /* AppDelegate.m in Sources */,
 				BA3FE3B41C0EE02B00C62C0F /* main.m in Sources */,
 			);
