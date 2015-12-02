@@ -6,4 +6,4 @@ This is the Objective-C Version of GuillotineMenu made by Yalantis https://githu
 
 # Note
 This is my first attempt to make a simple Objective-C version of Yalantis control. From now I will update this control to make this an awesome iOS menu.
-Feel free to contribute!
+Feel free to contribute  !
