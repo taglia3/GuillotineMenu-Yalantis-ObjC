@@ -25,6 +25,7 @@
 		BA3FE4011C0EEC1E00C62C0F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */; };
 		BA3FE4031C0EF2D900C62C0F /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */; };
 		BA3FE4061C0EF54C00C62C0F /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */; };
+		BA3FE4081C0F00F300C62C0F /* patternNav.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE4071C0F00F300C62C0F /* patternNav.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuButton@2x.png"; sourceTree = "<group>"; };
 		BA3FE4041C0EF54C00C62C0F /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGLGuillotineMenu.h; path = ../GuillotineMenu/TGLGuillotineMenu.h; sourceTree = "<group>"; };
 		BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TGLGuillotineMenu.m; path = ../GuillotineMenu/TGLGuillotineMenu.m; sourceTree = "<group>"; };
+		BA3FE4071C0F00F300C62C0F /* patternNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patternNav.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +178,6 @@
 		BA3FE3E61C0EE54000C62C0F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */,
 				BA3FE3E71C0EE56B00C62C0F /* content_1@3x.png */,
 				BA3FE3E81C0EE56B00C62C0F /* content_2@3x.png */,
 				BA3FE3E91C0EE56B00C62C0F /* ic_activity@3x.png */,
@@ -184,6 +185,8 @@
 				BA3FE3EC1C0EE56B00C62C0F /* ic_menuRotated@3x.png */,
 				BA3FE3ED1C0EE56B00C62C0F /* ic_profile@3x.png */,
 				BA3FE3EE1C0EE56B00C62C0F /* ic_settings@3x.png */,
+				BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */,
+				BA3FE4071C0F00F300C62C0F /* patternNav.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				BA3FE3F11C0EE56B00C62C0F /* ic_activity@3x.png in Resources */,
 				BA3FE3F21C0EE56B00C62C0F /* ic_feed@3x.png in Resources */,
 				BA3FE3F01C0EE56B00C62C0F /* content_2@3x.png in Resources */,
+				BA3FE4081C0F00F300C62C0F /* patternNav.png in Resources */,
 				BA3FE3F51C0EE56B00C62C0F /* ic_profile@3x.png in Resources */,
 				BA3FE3BF1C0EE02B00C62C0F /* Assets.xcassets in Resources */,
 				BA3FE3F41C0EE56B00C62C0F /* ic_menuRotated@3x.png in Resources */,

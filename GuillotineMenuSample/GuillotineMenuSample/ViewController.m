@@ -7,14 +7,17 @@
 //
 
 #import "ViewController.h"
-
 #import "TableViewCell.h"
+
+#import "TGLGuillotineMenu.h"
 
 static NSString* reuseIdentifier = @"CellPH";
 static const CGFloat cellHeight = 210;
 static const CGFloat cellSpacing = 20;
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate, TGLGuillotineMenuDelegate>
+
+@property (nonatomic, strong) TGLGuillotineMenu *menu;
 
 @end
 
@@ -25,9 +28,12 @@ static const CGFloat cellSpacing = 20;
     [super viewDidLoad];
     
     UINavigationBar* navBar = self.navigationController.navigationBar;
-    navBar.barTintColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
+    [navBar setTranslucent: YES];
+    //navBar.barTintColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    
+    [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
+    [navBar setShadowImage:[[UIImage alloc] init]];
+    self.navigationItem.title = @"ACTIVITY";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     tableView.backgroundColor = [UIColor colorWithRed:44.0 / 255.0 green:42.f / 255.f blue:54.f / 255.f alpha:1];
@@ -44,7 +50,13 @@ static const CGFloat cellSpacing = 20;
     UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
     [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+    
+    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:self.view.frame MenuButton:menuButton];
+    self.menu.delegate = self;
+    self.menu.alpha = 1.0;
+    [self.view addSubview: self.menu];
 }
 
 #pragma mark - Table view data source
@@ -96,7 +108,7 @@ static const CGFloat cellSpacing = 20;
 }
 
 -(void)switchMenuState{
-    
+    [self.menu switchMenuState];
 }
 
 @end
