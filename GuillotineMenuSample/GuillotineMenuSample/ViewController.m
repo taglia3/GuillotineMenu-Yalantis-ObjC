@@ -57,9 +57,8 @@ static const CGFloat cellSpacing = 20;
     NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"PROFILE", @"FEED", @"ACTIVITY", @"SETTINGS", nil];
     NSArray *imagesArray   = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_feed", @"ic_activity", @"ic_settings", nil];
     
-    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:self.view.frame MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
+    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:[UIScreen mainScreen].bounds MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
     self.menu.delegate = self;
-    self.menu.alpha = 1.0;
     [self.view addSubview: self.menu];
 }
 

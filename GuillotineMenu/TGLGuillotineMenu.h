@@ -18,7 +18,7 @@
     float navBarH;
     float statusBarH;
     
-    UIView      *menuView;
+   // UIView      *menuView;
     UIButton    *menuButton;
     UITableView *menuTableView;
     
