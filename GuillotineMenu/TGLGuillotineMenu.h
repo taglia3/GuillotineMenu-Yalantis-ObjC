@@ -10,7 +10,7 @@
 
 @protocol TGLGuillotineMenuDelegate;
 
-@interface TGLGuillotineMenu : UIView <UITableViewDataSource, UITableViewDelegate, UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate>{
+@interface TGLGuillotineMenu : UIViewController <UITableViewDataSource, UITableViewDelegate, UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate>{
     
     float screenW;
     float screenH;
@@ -18,7 +18,7 @@
     float navBarH;
     float statusBarH;
     
-   // UIView      *menuView;
+    UIView      *menuView;
     UIButton    *menuButton;
     UITableView *menuTableView;
     
@@ -44,8 +44,10 @@
     BOOL isPresentedFirst;
 }
 
+@property (nonatomic, strong) UIViewController  *currentViewController;
 
 @property (nonatomic, strong) UIButton  *menuButton;
+@property (nonatomic, strong) NSArray   *viewControllers;
 @property (nonatomic, strong) NSArray   *menuTitles;
 @property (nonatomic, strong) NSArray   *imagesTitles;
 @property (nonatomic, strong) UIColor   *menuColor;
@@ -54,7 +56,7 @@
 
 
 // -Init method
--(id)initWithFrame:(CGRect)frame MenuButton:(UIButton*)button MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;
+-(id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;
 
 // -
 -(BOOL)isOpen;

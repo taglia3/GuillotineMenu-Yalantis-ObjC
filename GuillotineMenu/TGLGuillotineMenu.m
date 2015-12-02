@@ -10,20 +10,22 @@
 
 @implementation TGLGuillotineMenu
 
-@synthesize menuButton, menuColor, menuTitles, imagesTitles;
+@synthesize menuButton, menuColor, menuTitles, imagesTitles, viewControllers;
 
--(id)initWithFrame:(CGRect)frame MenuButton:(UIButton *)button MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles{
+-(id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles{
     
-    self = [super initWithFrame:frame];
+    self = [super init];
     
     if (self) {
         
-        self.menuButton = button;
-        self.menuTitles = titles;
-        self.imagesTitles = imgTitles;
+        isPresentedFirst = NO;
+        
+        self.viewControllers    = [vCs copy];
+        self.menuTitles         = [titles copy];
+        self.imagesTitles       = [imgTitles copy];
         
         self.menuColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
-        self.backgroundColor = self.menuColor;
+        
         
         screenW = [[UIScreen mainScreen] bounds].size.width;
         screenH = [[UIScreen mainScreen] bounds].size.height;
@@ -38,13 +40,24 @@
     return  self;
 }
 
--(void)drawRect:(CGRect)rect{
+
+-(void)viewDidLoad{
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationBar* navBar = self.navigationController.navigationBar;
+    [navBar setTranslucent:YES];
+    navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
+    [navBar setShadowImage:[[UIImage alloc] init]];
     
     // - Setup Menu
     [self setupMenu];
     
     // - Setup UiKit Dynamics
     [self initAnimation];
+    
+    [self presentController:[self.viewControllers objectAtIndex:0]];
 }
 
 -(void)setupMenu{
@@ -55,41 +68,49 @@
     puntoAncoraggio = CGPointMake((navBarH/2.0),(navBarH/2.0));
     
     
-    //menuView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenW, screenH)];
-    self.backgroundColor = menuColor;
-    self.alpha = 0.0;
-    //[self addSubview:menuView];
+    menuView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenW, screenH)];
+    menuView.backgroundColor = menuColor;
+    menuView.alpha = 0.0;
+    [self.view addSubview:menuView];
     
     
     // - Menu Button
+    float buttonMenuW = 15.0;
+    float buttonMenuH = 10.0;
+    
+    self.menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
+    [self.menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+    [self.menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.menuButton];
     
     float tableViewMarginTop = 50.0;
     float tableViewW = 200.0;
     
     menuTableView = [[UITableView alloc ]initWithFrame:CGRectMake((screenW - tableViewW)/2, tableViewMarginTop + navBarH, tableViewW, screenH - 200.0 - tableViewMarginTop)];
-    menuTableView.center = self.center;
+    menuTableView.center = self.view.center;
     menuTableView.backgroundColor = [UIColor clearColor];
     menuTableView.delegate = self;
     menuTableView.dataSource = self;
     [menuTableView setSeparatorColor:[UIColor clearColor]];
     menuTableView.alpha = 0.0;
-    [self addSubview:menuTableView];
+    [menuView addSubview:menuTableView];
     
 }
 
 -(void)initAnimation{
     
     // - Dynamic Animator
-    animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.superview];
+    animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     animator.delegate = self;
     
     
     // - Gravity Behavior
-    gravity = [[UIGravityBehavior alloc] initWithItems:@[self]];
+    gravity = [[UIGravityBehavior alloc] initWithItems:@[menuView]];
     
     
     // - Item Behavior
-    UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[self]];
+    UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[menuView]];
     itemBehaviour.elasticity = 0.5;
     itemBehaviour.resistance = 1.5;
     itemBehaviour.allowsRotation = YES;
@@ -97,7 +118,7 @@
     
     
     // - Collision Behavior
-    collision = [[UICollisionBehavior alloc] initWithItems:@[self]];
+    collision = [[UICollisionBehavior alloc] initWithItems:@[menuView]];
     collision.collisionDelegate = self;
     [collision addBoundaryWithIdentifier:@"Collide End" fromPoint:CGPointMake(-2, screenH/2.0) toPoint:CGPointMake(-2, screenH)];
     [collision addBoundaryWithIdentifier:@"Collide Start" fromPoint:CGPointMake(screenH/2,-screenW + navBarH) toPoint:CGPointMake(screenH, -screenW + navBarH)];
@@ -105,24 +126,24 @@
     
     
     // - Attachment Behavior
-    UIOffset offset = UIOffsetMake(-self.superview.bounds.size.width/2 + puntoAncoraggio.x , -self.superview.bounds.size.height/2 + puntoAncoraggio.y);
-    attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self offsetFromCenter:offset attachedToAnchor:puntoAncoraggio];
+    UIOffset offset = UIOffsetMake(-self.view.bounds.size.width/2 + puntoAncoraggio.x , -self.view.bounds.size.height/2 + puntoAncoraggio.y);
+    attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:menuView offsetFromCenter:offset attachedToAnchor:puntoAncoraggio];
     [animator addBehavior:attachmentBehavior];
     
     
     // - Push Init
-    pushInit = [[UIPushBehavior alloc] initWithItems:@[self] mode:UIPushBehaviorModeContinuous];
+    pushInit = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeContinuous];
     CGVector vector = CGVectorMake(1000, 0);
     pushInit.pushDirection = vector;
     UIOffset offsetPush = UIOffsetMake(0, screenH/2);
-    [pushInit setTargetOffsetFromCenter:offsetPush forItem:self];
+    [pushInit setTargetOffsetFromCenter:offsetPush forItem:menuView];
     [animator addBehavior:pushInit];
     
     
     // -
     collision.action =  ^{
         
-        CGFloat radians = atan2( self.transform.b, self.transform.a);
+        CGFloat radians = atan2( menuView.transform.b, menuView.transform.a);
         CGFloat degrees = radians * (180 / M_PI );
         
         currentAngle = radians;
@@ -196,7 +217,7 @@
     
     
     // - Push Open
-    pushOpen = [[UIPushBehavior alloc] initWithItems:@[self] mode:UIPushBehaviorModeContinuous];
+    pushOpen = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeContinuous];
     CGVector vectorOpen = CGVectorMake(0, 1500.0);
     pushOpen.pushDirection = vectorOpen;
     [animator addBehavior:pushOpen];
@@ -216,11 +237,11 @@
     [animator removeBehavior:pushOpen];
     
     // - Push Init
-    pushInit = [[UIPushBehavior alloc] initWithItems:@[self] mode:UIPushBehaviorModeInstantaneous];
+    pushInit = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeInstantaneous];
     CGVector vector = CGVectorMake(500, 0);
     pushInit.pushDirection = vector;
     UIOffset offsetPush = UIOffsetMake(0, screenH/2);
-    [pushInit setTargetOffsetFromCenter:offsetPush forItem:self];
+    [pushInit setTargetOffsetFromCenter:offsetPush forItem:menuView];
     [animator addBehavior:pushInit];
     
     isOpen = NO;
@@ -243,7 +264,7 @@
         }
         
         [UIView animateWithDuration:0.1 delay:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.alpha = 1.0;
+            menuView.alpha = 1.0;
         } completion:nil];
         
         
@@ -318,7 +339,43 @@
         [strongDelegate selectedMenuItemAtIndex:indexPath.row];
     }
     
+    [self presentController:[self.viewControllers objectAtIndex:indexPath.row]];
+    
     [self dismissMenu];
+}
+
+
+
+#pragma mark - Presentation Logic
+
+- (void)presentController:(UIViewController*)controller{
+    
+    if(self.currentViewController){
+        [self removeCurrentViewController];
+    }
+    
+    [self addChildViewController:controller];
+    
+    controller.view.frame = self.view.frame;
+    
+    [self.view insertSubview:controller.view belowSubview:menuView];
+
+    
+    self.currentViewController = controller;
+    
+    //4. Complete the add flow calling the function didMoveToParentViewController
+    [controller didMoveToParentViewController:self];
+    
+}
+
+
+- (void)removeCurrentViewController{
+    
+    [self.currentViewController willMoveToParentViewController:nil];
+    
+    [self.currentViewController.view removeFromSuperview];
+    
+    [self.currentViewController removeFromParentViewController];
 }
 
 @end

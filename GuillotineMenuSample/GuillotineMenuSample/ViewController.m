@@ -32,8 +32,7 @@ static const CGFloat cellSpacing = 20;
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
-    
-    self.navigationItem.title = @"ACTIVITY";
+
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     tableView.backgroundColor = [UIColor colorWithRed:44.0 / 255.0 green:42.f / 255.f blue:54.f / 255.f alpha:1];
@@ -51,15 +50,13 @@ static const CGFloat cellSpacing = 20;
     [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-    
-    
-    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"PROFILE", @"FEED", @"ACTIVITY", @"SETTINGS", nil];
-    NSArray *imagesArray   = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_feed", @"ic_activity", @"ic_settings", nil];
-    
-    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:[UIScreen mainScreen].bounds MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
-    self.menu.delegate = self;
-    [self.view addSubview: self.menu];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+//    
+//    
+//    
+//    self.menu = [[TGLGuillotineMenu alloc] initWithFrame:[UIScreen mainScreen].bounds MenuButton:menuButton MenuTitles:titlesArray andImagesTitles:imagesArray];
+//    self.menu.delegate = self;
+//    [self.view addSubview: self.menu];
 }
 
 -(void)switchMenuState{

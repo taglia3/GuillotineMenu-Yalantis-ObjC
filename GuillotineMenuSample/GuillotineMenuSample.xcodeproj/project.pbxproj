@@ -26,6 +26,7 @@
 		BA3FE4031C0EF2D900C62C0F /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */; };
 		BA3FE4061C0EF54C00C62C0F /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */; };
 		BA3FE4081C0F00F300C62C0F /* patternNav.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE4071C0F00F300C62C0F /* patternNav.png */; };
+		BA3FE40C1C0F2B0900C62C0F /* TGLSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE40B1C0F2B0900C62C0F /* TGLSampleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		BA3FE4041C0EF54C00C62C0F /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGLGuillotineMenu.h; path = ../GuillotineMenu/TGLGuillotineMenu.h; sourceTree = "<group>"; };
 		BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TGLGuillotineMenu.m; path = ../GuillotineMenu/TGLGuillotineMenu.m; sourceTree = "<group>"; };
 		BA3FE4071C0F00F300C62C0F /* patternNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patternNav.png; sourceTree = "<group>"; };
+		BA3FE40A1C0F2B0900C62C0F /* TGLSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGLSampleViewController.h; path = Controller/TGLSampleViewController.h; sourceTree = "<group>"; };
+		BA3FE40B1C0F2B0900C62C0F /* TGLSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TGLSampleViewController.m; path = Controller/TGLSampleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 		BA3FE3B11C0EE02B00C62C0F /* GuillotineMenuSample */ = {
 			isa = PBXGroup;
 			children = (
+				BA3FE4091C0F2ADD00C62C0F /* Controller */,
 				BA3FE3FC1C0EE6F700C62C0F /* Cell */,
 				BA3FE3E61C0EE54000C62C0F /* Assets */,
 				BA3FE3B51C0EE02B00C62C0F /* AppDelegate.h */,
@@ -199,6 +203,15 @@
 				BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		BA3FE4091C0F2ADD00C62C0F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA3FE40A1C0F2B0900C62C0F /* TGLSampleViewController.h */,
+				BA3FE40B1C0F2B0900C62C0F /* TGLSampleViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +357,7 @@
 				BA3FE4061C0EF54C00C62C0F /* TGLGuillotineMenu.m in Sources */,
 				BA3FE4001C0EEC1E00C62C0F /* TableViewCell.m in Sources */,
 				BA3FE3B71C0EE02B00C62C0F /* AppDelegate.m in Sources */,
+				BA3FE40C1C0F2B0900C62C0F /* TGLSampleViewController.m in Sources */,
 				BA3FE3B41C0EE02B00C62C0F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +576,7 @@
 				BA3FE3DE1C0EE02B00C62C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA3FE3DF1C0EE02B00C62C0F /* Build configuration list for PBXNativeTarget "GuillotineMenuSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +585,7 @@
 				BA3FE3E11C0EE02B00C62C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA3FE3E21C0EE02B00C62C0F /* Build configuration list for PBXNativeTarget "GuillotineMenuSampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +594,7 @@
 				BA3FE3E41C0EE02B00C62C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
