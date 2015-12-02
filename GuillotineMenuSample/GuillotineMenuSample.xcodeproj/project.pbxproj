@@ -24,6 +24,7 @@
 		BA3FE4001C0EEC1E00C62C0F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE3FE1C0EEC1E00C62C0F /* TableViewCell.m */; };
 		BA3FE4011C0EEC1E00C62C0F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */; };
 		BA3FE4031C0EF2D900C62C0F /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */; };
+		BA3FE4061C0EF54C00C62C0F /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		BA3FE3FE1C0EEC1E00C62C0F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = Cell/TableViewCell.m; sourceTree = "<group>"; };
 		BA3FE3FF1C0EEC1E00C62C0F /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = Cell/TableViewCell.xib; sourceTree = "<group>"; };
 		BA3FE4021C0EF2D900C62C0F /* menuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuButton@2x.png"; sourceTree = "<group>"; };
+		BA3FE4041C0EF54C00C62C0F /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGLGuillotineMenu.h; path = ../GuillotineMenu/TGLGuillotineMenu.h; sourceTree = "<group>"; };
+		BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TGLGuillotineMenu.m; path = ../GuillotineMenu/TGLGuillotineMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 		BA3FE3E51C0EE16C00C62C0F /* GuillotineMenu */ = {
 			isa = PBXGroup;
 			children = (
+				BA3FE4041C0EF54C00C62C0F /* TGLGuillotineMenu.h */,
+				BA3FE4051C0EF54C00C62C0F /* TGLGuillotineMenu.m */,
 			);
 			name = GuillotineMenu;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3FE3BA1C0EE02B00C62C0F /* ViewController.m in Sources */,
+				BA3FE4061C0EF54C00C62C0F /* TGLGuillotineMenu.m in Sources */,
 				BA3FE4001C0EEC1E00C62C0F /* TableViewCell.m in Sources */,
 				BA3FE3B71C0EE02B00C62C0F /* AppDelegate.m in Sources */,
 				BA3FE3B41C0EE02B00C62C0F /* main.m in Sources */,
