@@ -23,7 +23,6 @@ static const CGFloat cellSpacing = 20;
 {
     [super viewDidLoad];
     
-    self.parentViewController.navigationItem.title = @"TABLE";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame];
     tableView.backgroundColor = [UIColor colorWithRed:44.0 / 255.0 green:42.f / 255.f blue:54.f / 255.f alpha:1];

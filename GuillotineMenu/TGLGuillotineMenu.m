@@ -58,6 +58,7 @@
     [self initAnimation];
     
     [self presentController:[self.viewControllers objectAtIndex:0]];
+    self.navigationItem.title = [self.menuTitles objectAtIndex:0];
 }
 
 -(void)setupMenu{
@@ -161,7 +162,7 @@
             oldAngle = currentAngle;
         }else if(currentAngle != oldAngle){
             
-         //   NSLog(@"%f", degrees);
+            NSLog(@"%f", degrees);
             
             CABasicAnimation *rota = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
             rota.duration = 0.01;
@@ -172,6 +173,8 @@
             rota.toValue = [NSNumber numberWithFloat: currentAngle ];
             [self.menuButton.layer addAnimation: rota forKey: @"rotation"];
             oldAngle = currentAngle;
+            
+            self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:1.0 alpha:((-degrees)/90)]};
         }
     };
     
@@ -340,7 +343,7 @@
     }
     
     [self presentController:[self.viewControllers objectAtIndex:indexPath.row]];
-    
+    self.navigationItem.title = [self.menuTitles objectAtIndex:indexPath.row];
     [self dismissMenu];
 }
 
