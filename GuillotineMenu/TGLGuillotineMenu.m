@@ -17,13 +17,6 @@
 
 @implementation CustomCollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	self.textLabel.tag = 10;
-	self.imageView.tag = 11;
-	return self;
-}
-
 @end
 
 @implementation TGLGuillotineMenu
@@ -362,7 +355,7 @@
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.font = [UIFont systemFontOfSize:19.0];
+    cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
     cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
     
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]]];
@@ -413,14 +406,14 @@
 		cell = (CustomCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
 	}
 	
-	cell.backgroundColor = [UIColor brownColor];
+	cell.backgroundColor = [UIColor clearColor];
 
 	CGFloat width = cell.bounds.size.width;
 	CGFloat height = cell.bounds.size.height;
 	
 	if (!cell.imageView) {
-		cell.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height/2)];
-		[cell.imageView setContentMode:UIViewContentModeCenter];
+		cell.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, 2*height/3)];
+		[cell.imageView setContentMode:UIViewContentModeBottom];
 		[cell.imageView setClipsToBounds:YES];
 		[cell.contentView addSubview:cell.imageView];
 	}
