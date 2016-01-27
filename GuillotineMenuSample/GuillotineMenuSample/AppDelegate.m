@@ -33,7 +33,7 @@
     NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"PROFILE", @"FEED", @"ACTIVITY", @"SETTINGS", nil];
     NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_feed", @"ic_activity", @"ic_settings", nil];
     
-    TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray];
+    TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray andStyle:TGLGuillotineMenuStyleCollection];
     menuVC.delegate = self;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
@@ -48,7 +48,6 @@
 #pragma mark - Guillotine Menu Delegate
 
 -(void)selectedMenuItemAtIndex:(NSInteger)index{
-    
     NSLog(@"Selected menu item at index %ld", index);
 }
 

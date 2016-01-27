@@ -10,7 +10,12 @@
 
 @protocol TGLGuillotineMenuDelegate;
 
-@interface TGLGuillotineMenu : UIViewController <UITableViewDataSource, UITableViewDelegate, UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate>{
+typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
+	TGLGuillotineMenuStyleTable,
+	TGLGuillotineMenuStyleCollection,
+};
+
+@interface TGLGuillotineMenu : UIViewController <UITableViewDataSource, UITableViewDelegate, UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
     
     float screenW;
     float screenH;
@@ -21,6 +26,7 @@
     UIView      *menuView;
     UIButton    *menuButton;
     UITableView *menuTableView;
+	UICollectionView *menuCollectionView;
     
     // - Menu Button Rotation
     float oldAngle;
@@ -51,24 +57,24 @@
 @property (nonatomic, strong) NSArray   *menuTitles;
 @property (nonatomic, strong) NSArray   *imagesTitles;
 @property (nonatomic, strong) UIColor   *menuColor;
+@property (nonatomic) TGLGuillotineMenuStyle menuStyle;
 
 @property (nonatomic, weak) id<TGLGuillotineMenuDelegate> delegate;
 
 
 // -Init method
--(id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;
+- (id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles;
+- (id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles andStyle:(TGLGuillotineMenuStyle)style;
 
 // -
--(BOOL)isOpen;
+- (BOOL)isOpen;
 
 // -
--(void)switchMenuState;
--(void)openMenu;
--(void)dismissMenu;
+- (void)switchMenuState;
+- (void)openMenu;
+- (void)dismissMenu;
 
 @end
-
-
 
 @protocol TGLGuillotineMenuDelegate <NSObject>
 

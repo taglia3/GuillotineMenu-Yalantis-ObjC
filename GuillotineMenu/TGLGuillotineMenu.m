@@ -8,11 +8,22 @@
 
 #import "TGLGuillotineMenu.h"
 
+@interface CustomCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *textLabel;
+
+@end
+
+@implementation CustomCollectionViewCell
+
+@end
+
 @implementation TGLGuillotineMenu
 
 @synthesize menuButton, menuColor, menuTitles, imagesTitles, viewControllers;
 
--(id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles{
+- (id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles {
     
     self = [super init];
     
@@ -40,8 +51,16 @@
     return  self;
 }
 
+- (id)initWithViewControllers:(NSArray *)vCs MenuTitles:(NSArray *)titles andImagesTitles:(NSArray *)imgTitles andStyle:(TGLGuillotineMenuStyle)style {
+	
+	self = [self initWithViewControllers:vCs MenuTitles:titles andImagesTitles:imgTitles];
+	
+	self.menuStyle = style;
+	
+	return self;
+}
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -61,7 +80,7 @@
     self.navigationItem.title = [self.menuTitles objectAtIndex:0];
 }
 
--(void)setupMenu{
+- (void)setupMenu {
     
     navBarH     = 64.0;
     statusBarH  = 20.0;
@@ -87,19 +106,32 @@
     
     float tableViewMarginTop = 50.0;
     float tableViewW = 200.0;
-    
-    menuTableView = [[UITableView alloc ]initWithFrame:CGRectMake((screenW - tableViewW)/2, tableViewMarginTop + navBarH, tableViewW, screenH - 200.0 - tableViewMarginTop)];
-    menuTableView.center = self.view.center;
-    menuTableView.backgroundColor = [UIColor clearColor];
-    menuTableView.delegate = self;
-    menuTableView.dataSource = self;
-    [menuTableView setSeparatorColor:[UIColor clearColor]];
-    menuTableView.alpha = 0.0;
-    [menuView addSubview:menuTableView];
-    
+	
+	if (self.menuStyle == TGLGuillotineMenuStyleCollection) {
+		 UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+		menuCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(40, 80, screenW - 80, screenH - 164) collectionViewLayout:layout];
+		menuCollectionView.center = self.view.center;
+		menuCollectionView.backgroundColor = [UIColor clearColor];
+		menuCollectionView.delegate = self;
+		menuCollectionView.dataSource = self;
+		menuCollectionView.alpha = 0.0;
+		[menuCollectionView registerClass:[CustomCollectionViewCell class] forCellWithReuseIdentifier:@"cellID"];
+		[menuView addSubview:menuCollectionView];
+	}
+	else {
+		menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2, tableViewMarginTop + navBarH, tableViewW, screenH - 200.0 - tableViewMarginTop)];
+		menuTableView.center = self.view.center;
+		menuTableView.backgroundColor = [UIColor clearColor];
+		menuTableView.delegate = self;
+		menuTableView.dataSource = self;
+		[menuTableView setSeparatorColor:[UIColor clearColor]];
+		menuTableView.alpha = 0.0;
+		[menuView addSubview:menuTableView];
+	}
+	
 }
 
--(void)initAnimation{
+- (void)initAnimation {
     
     // - Dynamic Animator
     animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
@@ -112,8 +144,8 @@
     
     // - Item Behavior
     UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[menuView]];
-    itemBehaviour.elasticity = 0.5;
-    itemBehaviour.resistance = 1.5;
+    itemBehaviour.elasticity = 0.7;
+    itemBehaviour.resistance = 0.8;
     itemBehaviour.allowsRotation = YES;
     [animator addBehavior:itemBehaviour];
     
@@ -160,10 +192,11 @@
             rota.toValue = [NSNumber numberWithFloat: currentAngle ];
             [self.menuButton.layer addAnimation: rota forKey: @"rotation"];
             oldAngle = currentAngle;
-        }else if(currentAngle != oldAngle){
+        }
+		else if(currentAngle != oldAngle){
             
-            NSLog(@"%f", degrees);
-            
+//            NSLog(@"%f", degrees);
+			
             CABasicAnimation *rota = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
             rota.duration = 0.01;
             rota.autoreverses = NO;
@@ -181,12 +214,12 @@
     
 }
 
--(BOOL)isOpen{
+- (BOOL)isOpen{
     return isOpen;
 }
 
 
--(void)switchMenuState{
+- (void)switchMenuState{
     
     NSLog(@"Menu Button Pressed");
     
@@ -197,7 +230,7 @@
     }
 }
 
--(void)openMenu{
+- (void)openMenu{
     
     id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
     
@@ -208,8 +241,11 @@
     
     
     // - Menu Table
-    [UIView animateWithDuration:0.2 animations:^{
-        menuTableView.alpha = 1.0;
+    [UIView animateWithDuration:0.15 animations:^{
+		if (self.menuStyle == TGLGuillotineMenuStyleCollection)
+			menuCollectionView.alpha = 1.0;
+		else
+			menuTableView.alpha = 1.0;
     } completion:^(BOOL finished) {
         
     }];
@@ -228,7 +264,7 @@
     isOpen = YES;
 }
 
--(void)dismissMenu{
+- (void)dismissMenu{
     
     id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
     
@@ -282,7 +318,10 @@
         
         // - Menu Table
         [UIView animateWithDuration:0.1 animations:^{
-            menuTableView.alpha = 0.0;
+			if (self.menuStyle == TGLGuillotineMenuStyleCollection)
+				menuCollectionView.alpha = 0.0;
+			else
+				menuTableView.alpha = 0.0;
         } completion:^(BOOL finished) {
             
         }];
@@ -291,19 +330,20 @@
     }
 }
 
+#pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return self.menuTitles.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+	
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
     
     if(cell == nil){
@@ -315,18 +355,19 @@
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.font = [UIFont systemFontOfSize:19.0];
+    cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
     cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
     
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[self.imagesTitles objectAtIndex:indexPath.row]]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]]];
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55.0f;
 }
+
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -347,7 +388,90 @@
     [self dismissMenu];
 }
 
+#pragma mark - Collection view data source
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return self.menuTitles.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	
+	CustomCollectionViewCell *cell = (CustomCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
+	
+	if (cell == nil){
+		cell = (CustomCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
+	}
+	
+	cell.backgroundColor = [UIColor clearColor];
+
+	CGFloat width = cell.bounds.size.width;
+	CGFloat height = cell.bounds.size.height;
+	
+	if (!cell.imageView) {
+		cell.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, 2*height/3)];
+		[cell.imageView setContentMode:UIViewContentModeBottom];
+		[cell.imageView setClipsToBounds:YES];
+		[cell.contentView addSubview:cell.imageView];
+	}
+	
+	if (!cell.textLabel) {
+		cell.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2*height/3, width, height/3)];
+		cell.textLabel.textColor = [UIColor whiteColor];
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
+		cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:17.f];
+		[cell.contentView addSubview:cell.textLabel];
+	}
+	
+	cell.imageView.image = [UIImage imageNamed:[self.imagesTitles objectAtIndex:indexPath.row]];
+	cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+	
+	return cell;
+}
+
+#pragma mark - Collection view delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if(!isOpen)
+		return;
+	
+	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
+	
+	id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+	
+	
+	if ([strongDelegate respondsToSelector:@selector(selectedMenuItemAtIndex:)]) {
+		[strongDelegate selectedMenuItemAtIndex:indexPath.row];
+	}
+	
+	[self presentController:[self.viewControllers objectAtIndex:indexPath.row]];
+	self.navigationItem.title = [self.menuTitles objectAtIndex:indexPath.row];
+	[self dismissMenu];
+	
+}
+
+#pragma mark - Collection view delegate flow layout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+	return UIEdgeInsetsZero;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+	CGFloat size = (screenW - 80 - 24)/2;
+	return CGSizeMake(size, size);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+	return 24.f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+	return 24.f;
+}
 
 #pragma mark - Presentation Logic
 
