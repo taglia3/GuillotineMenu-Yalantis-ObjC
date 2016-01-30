@@ -144,8 +144,8 @@
     
     // - Item Behavior
     UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[menuView]];
-    itemBehaviour.elasticity = 0.7;
-    itemBehaviour.resistance = 0.8;
+    itemBehaviour.elasticity = 0.53;
+    itemBehaviour.resistance = 1.2;
     itemBehaviour.allowsRotation = YES;
     [animator addBehavior:itemBehaviour];
     
@@ -257,7 +257,7 @@
     
     // - Push Open
     pushOpen = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeContinuous];
-    CGVector vectorOpen = CGVectorMake(0, 1500.0);
+    CGVector vectorOpen = CGVectorMake(0, 2200.0);
     pushOpen.pushDirection = vectorOpen;
     [animator addBehavior:pushOpen];
     
@@ -277,7 +277,7 @@
     
     // - Push Init
     pushInit = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeInstantaneous];
-    CGVector vector = CGVectorMake(500, 0);
+    CGVector vector = CGVectorMake(800, 100);
     pushInit.pushDirection = vector;
     UIOffset offsetPush = UIOffsetMake(0, screenH/2);
     [pushInit setTargetOffsetFromCenter:offsetPush forItem:menuView];
