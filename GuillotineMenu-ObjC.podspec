@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "GuillotineMenu-ObjC"
-  spec.version = '0.1'
+  spec.version = '0.2'
 
   spec.homepage = "http://yalantis.com/blog/how-we-created-guillotine-menu-animation/"
   spec.summary = "Custom menu transition from Navigation Bar"
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, '8.0'
   spec.ios.deployment_target = '8.0'
 
-  spec.source = { :git => "https://github.com/farshidce/GuillotineMenu-Yalantis-ObjC-Version.git", :tag => "0.1" }
+  spec.source = { :git => "https://github.com/farshidce/GuillotineMenu-Yalantis-ObjC-Version.git", :tag => "0.2" }
 
   spec.requires_arc = true
   spec.frameworks = 'UIKit'
