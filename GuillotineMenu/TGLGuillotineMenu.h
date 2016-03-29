@@ -23,15 +23,9 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
     float navBarH;
     float statusBarH;
     
-    UIView      *menuView;
     UIButton    *menuButton;
     UITableView *menuTableView;
 	UICollectionView *menuCollectionView;
-    
-    // - Menu Button Rotation
-    float oldAngle;
-    float currentAngle;
-    
     
     BOOL isOpen;
     BOOL supportBoundaryAdded;
@@ -46,8 +40,6 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
     UIGravityBehavior   *gravity;
     
     CGPoint puntoAncoraggio;
-    
-    BOOL isPresentedFirst;
 }
 
 @property (nonatomic, strong) UIViewController  *currentViewController;
