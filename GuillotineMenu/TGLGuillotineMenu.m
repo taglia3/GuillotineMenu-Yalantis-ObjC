@@ -91,7 +91,7 @@
 
 - (void)setupMenu {
     
-    navBarH     = 64.0;
+    navBarH     = self.navigationController.navigationBar.frame.size.height;
     statusBarH  = 20.0;
     
     puntoAncoraggio = CGPointMake((navBarH/2.0),(navBarH/2.0));
@@ -104,8 +104,8 @@
     
     
     // - Menu Button
-    float buttonMenuW = 15.0;
-    float buttonMenuH = 10.0;
+    float buttonMenuH = self.navigationController.navigationBar.frame.size.height - 20;
+    float buttonMenuW = buttonMenuH;
     
     self.menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
     if(!self.menuButtonImageTitle) {
