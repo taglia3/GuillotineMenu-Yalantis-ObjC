@@ -21,6 +21,7 @@ NSArray *imagesArray   = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_fe
 
 TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray];
 menuVC.delegate = self;
+menuVC.menuButtonImageTitle = @"menuIcon";
 
 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
 ```

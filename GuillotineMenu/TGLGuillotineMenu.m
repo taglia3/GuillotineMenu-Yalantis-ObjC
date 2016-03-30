@@ -108,7 +108,11 @@
     float buttonMenuH = 10.0;
     
     self.menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonMenuW, buttonMenuH)];
-    [self.menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+    if(!self.menuButtonImageTitle) {
+        [self.menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+    } else {
+        [self.menuButton setImage:[UIImage imageNamed:self.menuButtonImageTitle] forState:UIControlStateNormal];
+    }
     [self.menuButton addTarget:self action:@selector(switchMenuState) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.menuButton];

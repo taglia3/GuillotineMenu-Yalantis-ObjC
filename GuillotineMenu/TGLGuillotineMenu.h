@@ -45,6 +45,7 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 @property (nonatomic, strong) UIViewController  *currentViewController;
 
 @property (nonatomic, strong) UIButton  *menuButton;
+@property (nonatomic, strong) NSString  *menuButtonImageTitle;
 @property (nonatomic, strong) NSArray   *viewControllers;
 @property (nonatomic, strong) NSArray   *menuTitles;
 @property (nonatomic, strong) NSArray   *imagesTitles;
