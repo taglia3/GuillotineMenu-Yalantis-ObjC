@@ -1,4 +1,7 @@
 # GuillotineMenu Yalantis objc Version
+
+[![Build Status](https://travis-ci.org/farshidce/GuillotineMenu-Yalantis-ObjC-Version.png?branch=mastter)](https://travis-ci.org/farshidce/GuillotineMenu-Yalantis-ObjC-Version)
+
 This is the Objective-C Version of GuillotineMenu made by Yalantis https://github.com/Yalantis/GuillotineMenu
 
 ![Preview](https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif)
@@ -18,6 +21,7 @@ NSArray *imagesArray   = [[NSArray alloc] initWithObjects:@"ic_profile", @"ic_fe
 
 TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray];
 menuVC.delegate = self;
+menuVC.menuButtonImageTitle = @"menuIcon";
 
 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
 ```
